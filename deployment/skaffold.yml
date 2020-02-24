@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2alpha4
+kind: Config
+metadata:
+  name: devops
+build:
+  tagPolicy:
+    gitCommit: {}
+  artifacts:
+  - image: harbor.godwit.io/library/api
+    context: src/DevOps.Api
+deploy:
+  kubectl:
+    manifests:
+    - deployment/api.yaml
